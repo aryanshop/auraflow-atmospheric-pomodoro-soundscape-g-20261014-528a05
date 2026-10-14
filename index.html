@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraFlow: Atmospheric Pomodoro & Soundscape Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ambient-bg" id="ambientBg"></div>
+    <div class="app-container">
+        <header class="app-header">
+            <h1 class="logo">Aura<span>Flow</span></h1>
+            <p class="tagline">Immersive Focus & Ambient Soundscape Generator</p>
+        </header>
+
+        <main class="main-grid">
+            <!-- Timer Section -->
+            <section class="card timer-card" aria-labelledby="timerHeading">
+                <div class="mode-selector" role="tablist">
+                    <button class="mode-btn active" data-mode="pomodoro" role="tab" aria-selected="true">Pomodoro</button>
+                    <button class="mode-btn" data-mode="shortBreak" role="tab" aria-selected="false">Short Break</button>
+                    <button class="mode-btn" data-mode="longBreak" role="tab" aria-selected="false">Long Break</button>
+                </div>
+
+                <div class="timer-display-container">
+                    <svg class="progress-ring" width="260" height="260">
+                        <circle class="progress-ring__bg" cx="130" cy="130" r="116" />
+                        <circle class="progress-ring__bar" id="progressBar" cx="130" cy="130" r="116" />
+                    </svg>
+                    <div class="timer-time" id="timerTime" aria-live="polite">25:00</div>
+                    <div class="timer-status" id="timerStatus">Ready to Focus</div>
+                </div>
+
+                <div class="timer-controls">
+                    <button id="startBtn" class="btn btn-primary" aria-label="Start Timer">Start Session</button>
+                    <button id="resetBtn" class="btn btn-secondary" aria-label="Reset Timer">Reset</button>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-value" id="completedCount">0</span>
+                        <span class="stat-label">Sessions Done</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Soundscapes Section -->
+            <section class="card sound-card" aria-labelledby="soundHeading">
+                <div class="card-header">
+                    <h2 id="soundHeading">Ambient Soundscapes</h2>
+                    <button id="masterAudioBtn" class="btn btn-small" aria-pressed="false">Enable Sound Engine</button>
+                </div>
+                <p class="card-desc">Layer procedurally synthesized background textures to mask distractions.</p>
+
+                <div class="sound-grid">
+                    <!-- Rain -->
+                    <div class="sound-control">
+                        <div class="sound-info">
+                            <span class="sound-icon">🌧️</span>
+                            <span class="sound-name">Gentle Rain</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="slider" data-sound="rain" aria-label="Rain volume">
+                    </div>
+
+                    <!-- Wind -->
+                    <div class="sound-control">
+                        <div class="sound-info">
+                            <span class="sound-icon">💨</span>
+                            <span class="sound-name">Soft Wind</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="slider" data-sound="wind" aria-label="Wind volume">
+                    </div>
+
+                    <!-- Vinyl -->
+                    <div class="sound-control">
+                        <div class="sound-info">
+                            <span class="sound-icon">🎶</span>
+                            <span class="sound-name">Vinyl Crackle</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="slider" data-sound="vinyl" aria-label="Vinyl volume">
+                    </div>
+
+                    <!-- Waves -->
+                    <div class="sound-control">
+                        <div class="sound-info">
+                            <span class="sound-icon">🌊</span>
+                            <span class="sound-name">Ocean Waves</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="slider" data-sound="waves" aria-label="Waves volume">
+                    </div>
+                </div>
+
+                <div class="theme-selector">
+                    <span class="theme-label">Visual Theme:</span>
+                    <button class="theme-dot active" data-theme="midnight" style="background: #1e1b4b;" title="Midnight Nebula"></button>
+                    <button class="theme-dot" data-theme="forest" style="background: #064e3b;" title="Emerald Forest"></button>
+                    <button class="theme-dot" data-theme="sunset" style="background: #7c2d12;" title="Warm Amber"></button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
